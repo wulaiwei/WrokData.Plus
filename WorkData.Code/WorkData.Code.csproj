@@ -34,6 +34,7 @@
       <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -47,10 +48,22 @@
     <Compile Include="AutoMapper\WorkDataAutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\WorkDataAutoMapperExtensions.cs" />
     <Compile Include="AutoMapper\WorkDataMapProfile.cs" />
+    <Compile Include="BusinessEntities\BaseAction.cs" />
+    <Compile Include="BusinessEntities\Dictionary.cs" />
+    <Compile Include="BusinessEntities\HandlingResult.cs" />
+    <Compile Include="BusinessEntities\PageQueryEntity.cs" />
+    <Compile Include="BusinessEntities\UserFriendlyException.cs" />
+    <Compile Include="Extensions\QueryWhereIf.cs" />
+    <Compile Include="Predicates\ExpressionHelper.cs" />
+    <Compile Include="Predicates\IPredicateGroup.cs" />
+    <Compile Include="Predicates\WorkDataPredicate.cs" />
+    <Compile Include="Predicates\PredicateGroup.cs" />
+    <Compile Include="Predicates\PredicateOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
