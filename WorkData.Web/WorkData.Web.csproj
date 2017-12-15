@@ -43,12 +43,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
@@ -122,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkDataBaseController.cs" />
+    <Compile Include="Extensions\Filters\WebUowFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,9 +160,37 @@
     <Folder Include="Views\WorkDataBase\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{4f844944-2ae2-41c4-b8d0-b3a9da7d19c1}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.EntityFramework\Domain.EntityFramework.csproj">
+      <Project>{0989c51d-c295-464d-9786-eeeadb196b1f}</Project>
+      <Name>Domain.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598d734-1e02-4935-8ca0-4223cc41b44e}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.EntityFramework\WorkData.EntityFramework.csproj">
+      <Project>{ff854601-a130-4a3b-92b5-23a6d2f76fa7}</Project>
+      <Name>WorkData.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
+      <Project>{c0b12581-cae3-4ed0-99cf-d74249f0081f}</Project>
+      <Name>WorkData.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.Service\WorkData.Service.csproj">
+      <Project>{fce78e00-4efd-40ab-bded-4164cf3f3180}</Project>
+      <Name>WorkData.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkData.WebApi\WorkData.WebApi.csproj">
       <Project>{e9c01928-259a-4b12-9726-cd2866cda969}</Project>
       <Name>WorkData.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData\WorkData.csproj">
+      <Project>{cbd062a8-56de-468b-97c9-0e50ccd9d9a4}</Project>
+      <Name>WorkData</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,22 +1,22 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData
 // 文件名：IocManager.cs
 // 创建标识：吴来伟 2017-11-22 17:38
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-12-05 10:13
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
 #region
 
-using System;
-using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
 using Autofac.Extras.CommonServiceLocator;
 using CommonServiceLocator;
+using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -30,17 +30,23 @@ namespace WorkData.Dependency
         /// <summary>
         ///     ContainerBuilder
         /// </summary>
-        public ContainerBuilder ContainerBuilder { get; set; }
+        public static ContainerBuilder ContainerBuilder { get; set; }
 
         /// <summary>
         ///     IocContainer
         /// </summary>
         public static IContainer IocContainer { get; set; }
 
+        IServiceLocator IIocManager.ServiceLocatorCurrent
+        {
+            get => ServiceLocatorCurrent;
+            set => ServiceLocatorCurrent = value;
+        }
+
         /// <summary>
         ///     ServiceLocator
         /// </summary>
-        public IServiceLocator ServiceLocatorCurrent { get; set; }
+        public static IServiceLocator ServiceLocatorCurrent { get; set; }
 
         /// <summary>
         ///     The Singleton instance.
@@ -62,11 +68,21 @@ namespace WorkData.Dependency
         public void SetContainer(ContainerBuilder containerBuilder)
         {
             ContainerBuilder = containerBuilder;
-            var container = ContainerBuilder.Build();
+            var container = containerBuilder.Build();
             IocContainer = container;
 
             //设置定位器
             ServiceLocatorCurrent = new AutofacServiceLocator(IocContainer);
+        }
+
+        /// <summary>
+        /// UpdateContainer
+        /// </summary>
+        /// <param name="containerBuilder"></param>
+        public void UpdateContainer(ContainerBuilder containerBuilder)
+        {
+            ContainerBuilder = containerBuilder;
+            containerBuilder.Update(IocContainer);
         }
 
         /// <summary>
@@ -122,6 +138,30 @@ namespace WorkData.Dependency
         }
 
         /// <summary>
+        /// ResolveName
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T ResolveName<T>()
+        {
+            var scope = Scope();
+            var item = scope.Resolve<T>();
+            return item;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public object Resolve(Type type)
+        {
+            var scope = Scope();
+            var item = scope.Resolve(type);
+            return item;
+        }
+
+        /// <summary>
         ///     IsRegistered
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -162,6 +202,15 @@ namespace WorkData.Dependency
         private static ILifetimeScope Scope()
         {
             return IocContainer.BeginLifetimeScope();
+        }
+
+        /// <summary>
+        /// ContainerBuilder
+        /// </summary>
+        ContainerBuilder IRegistrar.ContainerBuilder
+        {
+            get => ContainerBuilder;
+            set => ContainerBuilder = value;
         }
     }
 }

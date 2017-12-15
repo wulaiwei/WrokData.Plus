@@ -1,10 +1,10 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.Infrastructure
 // 文件名：CurrentUnitOfWorkProvider.cs
 // 创建标识：吴来伟 2017-11-27 14:45
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-11-27 14:45
 // 修改描述：
 //  ------------------------------------------------------------------------------
@@ -17,9 +17,10 @@ namespace WorkData.Infrastructure.UnitOfWorks
     /// <summary>
     /// CurrentUnitOfWorkProvider
     /// </summary>
-    public class CurrentUnitOfWorkProvider: ICurrentUnitOfWorkProvider
+    public class CurrentUnitOfWorkProvider : ICurrentUnitOfWorkProvider
     {
         private static readonly AsyncLocal<IUnitOfWork> AsyncLocalUow = new AsyncLocal<IUnitOfWork>();
+
         public IUnitOfWork Current
         {
             get => GetUnitOfWork();

@@ -1,20 +1,20 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData
 // 文件名：IResolver.cs
 // 创建标识：吴来伟 2017-11-23 11:37
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-11-23 11:41
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
 #region
 
-using System;
-using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
+using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -27,7 +27,7 @@ namespace WorkData.Dependency
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        T Resolve<T>(ILifetimeScope scope=null);
+        T Resolve<T>(ILifetimeScope scope = null);
 
         /// <summary>
         ///     Determines whether this instance is registered.
@@ -47,7 +47,6 @@ namespace WorkData.Dependency
         ///     <c>true</c> if the specified type is registered; otherwise, <c>false</c>.
         /// </returns>
         bool IsRegistered(Type type, ILifetimeScope scope = null);
-
 
         /// <summary>
         /// Releases a pre-resolved object. See Resolve methods.
@@ -72,5 +71,17 @@ namespace WorkData.Dependency
         /// <returns></returns>
         T ResolveParameter<T>(params Parameter[] parameters);
 
+        /// <summary>
+        /// Resolve
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T ResolveName<T>();
+
+        /// <summary>
+        /// Resolve
+        /// </summary>
+        /// <returns></returns>
+        object Resolve(Type type);
     }
 }

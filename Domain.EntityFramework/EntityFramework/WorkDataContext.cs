@@ -1,17 +1,18 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：Domain.EntityFramework
 // 文件名：WorkDataContext.cs
 // 创建标识：吴来伟 2017-12-06 15:34
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-12-06 15:34
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+using Domain.Core;
+using Domain.EntityFramework.Mappings;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Domain.EntityFramework.Mappings;
 using WorkData.EntityFramework;
 
 namespace Domain.EntityFramework.EntityFramework
@@ -19,8 +20,10 @@ namespace Domain.EntityFramework.EntityFramework
     /// <summary>
     /// WorkDataContext
     /// </summary>
-    public class WorkDataContext: WorkDataBaseDbContext
+    public class WorkDataContext : WorkDataBaseDbContext
     {
+        public IDbSet<Wallet> Wallet { get; set; }
+
         /// <summary>
         /// WorkDataContext
         /// </summary>
@@ -51,7 +54,5 @@ namespace Domain.EntityFramework.EntityFramework
             //新增
             modelBuilder.Configurations.Add(new WalletMap());
         }
-
-
     }
 }

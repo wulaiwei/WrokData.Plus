@@ -1,10 +1,10 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.Code
 // 文件名：UserFriendlyException.cs
 // 创建标识：吴来伟 2017-12-07 17:21
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-12-07 17:21
 // 修改描述：
 //  ------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ namespace WorkData.Code.BusinessEntities
     /// UserFriendlyException
     /// </summary>
     [Serializable]
-    public class UserFriendlyException: Exception
+    public class UserFriendlyException : Exception
     {
         /// <summary>
         /// Additional information about the exception.
@@ -29,14 +29,12 @@ namespace WorkData.Code.BusinessEntities
         /// </summary>
         public int Code { get; set; }
 
-
         /// <summary>
         /// Constructor.
         /// </summary>
         public UserFriendlyException()
         {
         }
-
 
         /// <summary>
         /// Constructor.
@@ -45,9 +43,7 @@ namespace WorkData.Code.BusinessEntities
         public UserFriendlyException(string message)
             : base(message)
         {
-
         }
-
 
         public UserFriendlyException(string message, Exception innerException) : base(message, innerException)
         {

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFrameworkModule.cs" />
+    <Compile Include="Extensions\DbContextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DbContextProvider.cs" />
     <Compile Include="Repositories\EfBaseRepository.cs" />
@@ -65,6 +66,10 @@
     <Compile Include="WorkDataBaseDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598D734-1E02-4935-8CA0-4223CC41B44E}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
       <Project>{c0b12581-cae3-4ed0-99cf-d74249f0081f}</Project>
       <Name>WorkData.Infrastructure</Name>

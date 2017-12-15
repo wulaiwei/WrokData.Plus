@@ -1,20 +1,22 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.EntityFramework
 // 文件名：EfUnitOfWork.cs
 // 创建标识：吴来伟 2017-11-27 11:33
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-12-04 15:46
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
 #region
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using WorkData.Code.BusinessEntities;
 using WorkData.Infrastructure.UnitOfWorks;
 
 #endregion
@@ -28,12 +30,19 @@ namespace WorkData.EntityFramework.UnitOfWorks
         /// </summary>
         public Dictionary<string, DbContext> InitializedDbContexts;
 
+        /// <summary>
+        /// DbContextTransactions
+        /// </summary>
+        private readonly Dictionary<DbContext, DbContextTransaction> _transactions;
+
         private readonly IEfContextFactory _efContextFactory;
 
         public EfUnitOfWork(IEfContextFactory efContextFactory)
         {
             _efContextFactory = efContextFactory;
             InitializedDbContexts = new Dictionary<string, DbContext>();
+
+            _transactions = new Dictionary<DbContext, DbContextTransaction>();
         }
 
         /// <summary>
@@ -45,7 +54,7 @@ namespace WorkData.EntityFramework.UnitOfWorks
             where TDbContext : DbContext
         {
             return _efContextFactory
-                .GetCurrentDbContext<TDbContext>(InitializedDbContexts);
+                .GetCurrentDbContext<TDbContext>(InitializedDbContexts, _transactions);
         }
 
         /// <summary>
@@ -58,9 +67,8 @@ namespace WorkData.EntityFramework.UnitOfWorks
             where TDbContext : DbContext
         {
             return _efContextFactory
-                .GetCurrentDbContext<TDbContext>(InitializedDbContexts, conString);
+                .GetCurrentDbContext<TDbContext>(InitializedDbContexts, _transactions, conString);
         }
-
 
         /// <summary>
         ///     ComplateUnit
@@ -106,8 +114,22 @@ namespace WorkData.EntityFramework.UnitOfWorks
         {
             foreach (var item in GetAllInitializedDbContexts())
             {
-                SaveChangesInDbContext(item);
+                try
+                {
+                    SaveChangesInDbContext(item);
+                    var tran = GetValueOrDefault(_transactions, item);
+                    if (tran == null) continue;
+                    tran.Commit();
+                    tran.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    throw new UserFriendlyException(ex.Message);
+                }
             }
+
+            //清除所有事务
+            _transactions.Clear();
         }
 
         /// <summary>
@@ -118,8 +140,22 @@ namespace WorkData.EntityFramework.UnitOfWorks
         {
             foreach (var item in GetAllInitializedDbContexts())
             {
-                await SaveChangesInDbContextAsync(item);
+                try
+                {
+                    await SaveChangesInDbContextAsync(item);
+                    var tran = GetValueOrDefault(_transactions, item);
+                    if (tran == null) continue;
+                    tran.Commit();
+                    tran.Dispose();
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
+
+            //清除所有事务
+            _transactions.Clear();
         }
 
         /// <summary>
@@ -148,6 +184,16 @@ namespace WorkData.EntityFramework.UnitOfWorks
         protected virtual async Task SaveChangesInDbContextAsync(DbContext dbContext)
         {
             await dbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Returns the value associated with the specified key or the default
+        /// value for the TValue  type.
+        /// </summary>
+        private static TValue GetValueOrDefault<TKey, TValue>(IDictionary<TKey, TValue> dictionary, TKey key)
+        {
+            TValue value;
+            return dictionary.TryGetValue(key, out value) ? value : default(TValue);
         }
     }
 }

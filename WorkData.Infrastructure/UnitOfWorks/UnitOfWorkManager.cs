@@ -1,23 +1,23 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.Infrastructure
 // 文件名：UnitOfWorkManager.cs
 // 创建标识：吴来伟 2017-11-27 14:28
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-11-27 14:28
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
-using System;
 using WorkData.Dependency;
 
 namespace WorkData.Infrastructure.UnitOfWorks
 {
-    public class UnitOfWorkManager: IUnitOfWorkManager
+    public class UnitOfWorkManager : IUnitOfWorkManager
     {
         private readonly ICurrentUnitOfWorkProvider _currentUnitOfWorkProvider;
         private readonly IResolver _resolver;
+
         public UnitOfWorkManager(ICurrentUnitOfWorkProvider currentUnitOfWorkProvider, IResolver resolver)
         {
             _currentUnitOfWorkProvider = currentUnitOfWorkProvider;
@@ -36,10 +36,10 @@ namespace WorkData.Infrastructure.UnitOfWorks
         public IUnitOfWorkCompleteHandle Begin()
         {
             var unitOfWork = _currentUnitOfWorkProvider.Current;
-            if (unitOfWork!=null)
-            {
-                throw new Exception("unitOfWork");
-            }
+            //if (unitOfWork!=null)
+            //{
+            //    throw new Exception("unitOfWork");
+            //}
             unitOfWork = _resolver.Resolve<IUnitOfWork>();
             //开启事务
             unitOfWork.Begin();

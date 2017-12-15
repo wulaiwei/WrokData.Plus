@@ -1,10 +1,10 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.EntityFramework
 // 文件名：EfContextFactory.cs
 // 创建标识：吴来伟 2017-12-05 9:15
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-12-05 10:13
 // 修改描述：
 //  ------------------------------------------------------------------------------
@@ -14,7 +14,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Autofac;
 using WorkData.Dependency;
 
 #endregion
@@ -37,16 +36,26 @@ namespace WorkData.EntityFramework.UnitOfWorks
         ///     default current context
         /// </summary>
         /// <param name="dic"></param>
+        /// <param name="tranDic"></param>
         /// <returns></returns>
-        public TDbContext GetCurrentDbContext<TDbContext> (Dictionary<string, DbContext> dic) 
+        public TDbContext GetCurrentDbContext<TDbContext>(Dictionary<string, DbContext> dic, Dictionary<DbContext, DbContextTransaction> tranDic)
             where TDbContext : DbContext
         {
-            return GetCurrentDbContext<TDbContext>(dic, "WorkData");
+            return GetCurrentDbContext<TDbContext>(dic, tranDic, string.Empty);
         }
 
-        public TDbContext GetCurrentDbContext<TDbContext>( Dictionary<string, DbContext> dic, string conString)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <param name="dic"></param>
+        /// <param name="tranDic"></param>
+        /// <param name="conString"></param>
+        /// <returns></returns>
+        public TDbContext GetCurrentDbContext<TDbContext>(Dictionary<string, DbContext> dic, Dictionary<DbContext, DbContextTransaction> tranDic, string conString)
             where TDbContext : DbContext
         {
+            conString = typeof(TDbContext).ToString();
             var dbContext = dic.ContainsKey(conString + "DbContext") ? dic[conString + "DbContext"] : null;
             try
             {
@@ -59,17 +68,17 @@ namespace WorkData.EntityFramework.UnitOfWorks
             catch (Exception)
             {
                 dic.Remove(conString + "DbContext");
-                //CallContext.FreeNamedDataSlot(conStringName + "DbContext");
             }
-
-            dbContext = _resolver.ResolveParameter<TDbContext>(
-                new NamedParameter("nameOrConnectionString", conString));
+            dbContext = _resolver.ResolveName<TDbContext>();
 
             //我们在创建一个，放到数据槽中去
             dic.Add(conString + "DbContext", dbContext);
 
+            //开始事务
+            var tran = dbContext.Database.BeginTransaction();
+            tranDic.Add(dbContext, tran);
+
             return (TDbContext)dbContext;
         }
-
     }
 }

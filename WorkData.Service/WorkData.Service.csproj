@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy.4.2.1\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +49,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDoService.cs" />
+    <Compile Include="IWalletService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DoService.cs" />
+    <Compile Include="WalletService.cs" />
+    <Compile Include="WorkDataServiceModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{4F844944-2AE2-41C4-B8D0-B3A9DA7D19C1}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.EntityFramework\Domain.EntityFramework.csproj">
+      <Project>{0989C51D-C295-464D-9786-EEEADB196B1F}</Project>
+      <Name>Domain.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598D734-1E02-4935-8CA0-4223CC41B44E}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.EntityFramework\WorkData.EntityFramework.csproj">
+      <Project>{FF854601-A130-4A3B-92B5-23A6D2F76FA7}</Project>
+      <Name>WorkData.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
+      <Project>{C0B12581-CAE3-4ED0-99CF-D74249F0081F}</Project>
+      <Name>WorkData.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData\WorkData.csproj">
+      <Project>{CBD062A8-56DE-468B-97C9-0E50CCD9D9A4}</Project>
+      <Name>WorkData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,10 @@
 ﻿// ------------------------------------------------------------------------------
-// Copyright  吴来伟个人 版权所有。 
+// Copyright  吴来伟个人 版权所有。
 // 项目名：WorkData.Infrastructure
 // 文件名：UnitOfWork.cs
 // 创建标识：吴来伟 2017-11-27 11:04
 // 创建描述：
-//  
+//
 // 修改标识：吴来伟2017-11-27 11:04
 // 修改描述：
 //  ------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ namespace WorkData.Infrastructure.UnitOfWorks
     /// <summary>
     /// UnitOfWork
     /// </summary>
-    public abstract class UnitOfWorkBase :  IUnitOfWork
+    public abstract class UnitOfWorkBase : IUnitOfWork
     {
         /// <summary>
         /// Begin
@@ -24,6 +24,7 @@ namespace WorkData.Infrastructure.UnitOfWorks
         public virtual void Begin()
         {
         }
+
         /// <summary>
         /// ComplateUnit
         /// </summary>
@@ -42,6 +43,7 @@ namespace WorkData.Infrastructure.UnitOfWorks
         }
 
         private bool _disposed;
+
         /// <summary>
         /// Dispose
         /// </summary>

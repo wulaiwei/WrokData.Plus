@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Do.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wallet.cs" />
   </ItemGroup>
@@ -68,6 +69,10 @@
     <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
       <Project>{C0B12581-CAE3-4ED0-99CF-D74249F0081F}</Project>
       <Name>WorkData.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData\WorkData.csproj">
+      <Project>{cbd062a8-56de-468b-97c9-0e50ccd9d9a4}</Project>
+      <Name>WorkData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainEntityFrameworkModule.cs" />
+    <Compile Include="EntityFramework\DoContext.cs" />
     <Compile Include="EntityFramework\WorkDataContext.cs" />
+    <Compile Include="Mappings\DoMap.cs" />
     <Compile Include="Mappings\WalletMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +73,10 @@
     <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
       <Project>{c0b12581-cae3-4ed0-99cf-d74249f0081f}</Project>
       <Name>WorkData.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkData\WorkData.csproj">
+      <Project>{CBD062A8-56DE-468B-97C9-0E50CCD9D9A4}</Project>
+      <Name>WorkData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
