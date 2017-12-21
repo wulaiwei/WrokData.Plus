@@ -50,7 +50,9 @@ namespace WorkData.Web
             #region WebApi
 
             var config = GlobalConfiguration.Configuration;
-            newBuidler.RegisterApiControllers(Assembly.Load("WorkData.WebApi"));
+            //开启属性注入
+            newBuidler.RegisterApiControllers(Assembly.Load("WorkData.WebApi"))
+                .PropertiesAutowired();
             newBuidler.Register(c => new ApiUowFilterAttribute(c.Resolve<IUnitOfWorkManager>()));
             newBuidler.RegisterWebApiFilterProvider(config);
             newBuidler.RegisterWebApiModelBinderProvider();
@@ -65,7 +67,7 @@ namespace WorkData.Web
             //注册过滤器
             newBuidler.Register(c => new WebUowFilterAttribute(c.Resolve<IUnitOfWorkManager>()));
             newBuidler.RegisterFilterProvider();
-            newBuidler.RegisterControllers(typeof(MvcApplication).Assembly);
+            newBuidler.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
 
             #endregion
 

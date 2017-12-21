@@ -66,6 +66,10 @@
       <Project>{4f844944-2ae2-41c4-b8d0-b3a9da7d19c1}</Project>
       <Name>Domain.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598D734-1E02-4935-8CA0-4223CC41B44E}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkData.EntityFramework\WorkData.EntityFramework.csproj">
       <Project>{ff854601-a130-4a3b-92b5-23a6d2f76fa7}</Project>
       <Name>WorkData.EntityFramework</Name>

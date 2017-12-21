@@ -9,9 +9,14 @@
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+using System.Linq;
 using Autofac;
+using Autofac.Core;
 using Autofac.Extras.DynamicProxy;
+using Domain.Core;
 using Domain.EntityFramework;
+using WorkData.Code;
+using WorkData.Code.Sessions;
 using WorkData.EntityFramework;
 using WorkData.Extensions.Modules;
 using WorkData.Infrastructure;
@@ -19,15 +24,26 @@ using WorkData.Infrastructure;
 namespace WorkData.Service
 {
     [DependsOn(
+        typeof(DomainCoreModule),
         typeof(DomainEntityFrameworkModule),
         typeof(EntityFrameworkModule),
-        typeof(InfrastructurModule))]
+        typeof(InfrastructurModule),
+        typeof(WorkDataCodeModule))]
     public class WorkDataServiceModule : WorkDataBaseModule
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<WalletService>().As<IWalletService>().EnableInterfaceInterceptors().PropertiesAutowired();
-            builder.RegisterType<DoService>().As<IDoService>().EnableInterfaceInterceptors().PropertiesAutowired();
+            //自动用Services里的类来注册相应实例，无须一个个注册
+            //builder.RegisterAssemblyTypes(typeof(IWalletService).Assembly)
+            //    .Where(t => t.IsClass && t.Name.EndsWith("Service"))
+            //    .WithProperty(new NamedPropertyParameter("B", t => t.))
+            //    .As(t => t.GetInterfaces())
+            //    .InstancePerRequest();
+
+            builder.RegisterType<WalletService>().As<IWalletService>()
+                .EnableInterfaceInterceptors().PropertiesAutowired();
+            builder.RegisterType<DoService>().As<IDoService>()
+                .EnableInterfaceInterceptors().PropertiesAutowired();
         }
     }
 }

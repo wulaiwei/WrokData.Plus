@@ -9,6 +9,7 @@
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+using WorkData.Code.Entities;
 using WorkData.Extensions.Modules;
 
 namespace Domain.Core

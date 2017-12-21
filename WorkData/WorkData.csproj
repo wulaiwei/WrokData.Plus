@@ -143,7 +143,8 @@
     <Compile Include="Dependency\IRegistrar.cs" />
     <Compile Include="Dependency\IResolver.cs" />
     <Compile Include="Extensions\Modules\DependsOnAttribute.cs" />
-    <Compile Include="Extensions\Modules\IEntity.cs" />
+    <Compile Include="Extensions\Modules\IWorkDataModuleManage.cs" />
+    <Compile Include="Extensions\Modules\WorkDataModuleManage.cs" />
     <Compile Include="Extensions\Types\EntityTypeInfo.cs" />
     <Compile Include="Extensions\Types\ILoadAssembly.cs" />
     <Compile Include="Extensions\Types\ILoadType.cs" />
@@ -152,9 +153,6 @@
     <Compile Include="Extensions\Types\NullLoadAssembly.cs" />
     <Compile Include="Extensions\Types\NullLoadType.cs" />
     <Compile Include="Extensions\Modules\WorkDataBaseModule.cs" />
-    <Compile Include="Helpers\ReflectionHelper.cs" />
-    <Compile Include="Helpers\AsyncHelper.cs" />
-    <Compile Include="Helpers\EntityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkDataModule.cs" />
   </ItemGroup>

@@ -14,6 +14,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using WorkData.Code.Entities;
 using WorkData.Extensions.Modules;
 using WorkData.Infrastructure.Repositories;
 

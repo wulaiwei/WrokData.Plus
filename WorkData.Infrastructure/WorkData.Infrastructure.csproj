@@ -74,6 +74,10 @@
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598D734-1E02-4935-8CA0-4223CC41B44E}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkData\WorkData.csproj">
       <Project>{cbd062a8-56de-468b-97c9-0e50ccd9d9a4}</Project>
       <Name>WorkData</Name>

@@ -21,7 +21,7 @@ using WorkData.Infrastructure.Repositories;
 
 namespace WorkData.Service
 {
-    public class DoService : IDoService
+    public class DoService : WorkDataBaseService, IDoService
     {
         private readonly IBaseRepository<Do, string> _rep;
 

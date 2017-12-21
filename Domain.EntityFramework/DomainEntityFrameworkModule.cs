@@ -11,6 +11,8 @@
 
 using Autofac;
 using Domain.EntityFramework.EntityFramework;
+using WorkData.Code;
+using WorkData.Code.Sessions;
 using WorkData.EntityFramework;
 using WorkData.Extensions.Modules;
 using WorkData.Infrastructure;
@@ -22,7 +24,8 @@ namespace Domain.EntityFramework
     /// </summary>
     [DependsOn(
         typeof(EntityFrameworkModule),
-        typeof(InfrastructurModule))]
+        typeof(InfrastructurModule),
+        typeof(WorkDataCodeModule))]
     public class DomainEntityFrameworkModule : WorkDataBaseModule
     {
         protected override void Load(ContainerBuilder builder)
@@ -35,8 +38,8 @@ namespace Domain.EntityFramework
             //builder.RegisterType(typeof(WorkDataContext))
             //        //.WithParameter(new NamedParameter("nameOrConnectionString", $"{typeof(WorkDataContext)}"))
             //        .Named($"{typeof(WorkDataContext)}", typeof(DbContext));
-            builder.Register(c => new WorkDataContext("WorkDataContext"));
-            builder.Register(c => new DoContext("DoContext"));
+            builder.Register(c => new WorkDataContext("WorkDataContext") { WorkDataSession = c.Resolve<IWorkDataSession>() });
+            builder.Register(c => new DoContext("DoContext") { WorkDataSession = c.Resolve<IWorkDataSession>() });
         }
     }
 }

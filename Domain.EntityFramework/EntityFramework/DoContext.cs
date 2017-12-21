@@ -13,12 +13,14 @@ using Domain.Core;
 using Domain.EntityFramework.Mappings;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using WorkData.Code.Sessions;
 using WorkData.EntityFramework;
 
 namespace Domain.EntityFramework.EntityFramework
 {
     public class DoContext : WorkDataBaseDbContext
     {
+
         public IDbSet<Do> Do { get; set; }
 
         /// <summary>

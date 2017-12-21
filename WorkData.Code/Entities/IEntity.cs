@@ -8,7 +8,7 @@
 // 修改标识：吴来伟2017-12-04 17:40
 // 修改描述：
 //  ------------------------------------------------------------------------------
-namespace WorkData.Extensions.Modules
+namespace WorkData.Code.Entities
 {
     /// <summary>
     /// IEntity

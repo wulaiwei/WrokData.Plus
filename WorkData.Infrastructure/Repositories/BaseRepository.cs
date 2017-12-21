@@ -13,6 +13,7 @@
 
 using System.Linq;
 using System.Threading.Tasks;
+using WorkData.Code.Entities;
 using WorkData.Dependency;
 using WorkData.Extensions.Modules;
 using WorkData.Infrastructure.UnitOfWorks;

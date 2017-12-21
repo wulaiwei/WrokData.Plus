@@ -13,6 +13,7 @@
 
 using Autofac;
 using WorkData.Dependency;
+using WorkData.Extensions.Modules;
 using WorkData.Extensions.Types;
 
 #endregion
@@ -30,6 +31,10 @@ namespace WorkData
 
             builder.RegisterType<LoadType>()
                 .As<ILoadType>().PropertiesAutowired();
+
+            builder.Register(c => new WorkDataModuleManage(c.Resolve<IIocManager>()))
+                .As<IWorkDataModuleManage>();
+
         }
     }
 }

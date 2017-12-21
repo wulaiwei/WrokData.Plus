@@ -31,27 +31,6 @@ namespace WorkData.Web.Extensions.Filters
         }
 
         /// <summary>
-        /// BaseApiActionFilterAttribute
-        /// </summary>
-        /// <param name="actionContext"></param>
-        //public override void OnActionExecuting(HttpActionContext actionContext)
-        //{
-        //    base.OnActionExecuting(actionContext);
-        //    UnitOfWorkCompleteHandle = _unitOfWorkManager.Begin();
-        //}
-
-        ///// <summary>
-        ///// OnActionExecuted
-        ///// </summary>
-        ///// <param name="actionExecutedContext"></param>
-        //public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
-        //{
-        //    base.OnActionExecuted(actionExecutedContext);
-
-        //    UnitOfWorkCompleteHandle.Complate();
-        //}
-
-        /// <summary>
         /// Action之前
         /// </summary>
         /// <param name="filterContext"></param>

@@ -12,7 +12,7 @@
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace WorkData.Helpers
+namespace WorkData.Code.Helpers
 {
     public class AsyncHelper
     {

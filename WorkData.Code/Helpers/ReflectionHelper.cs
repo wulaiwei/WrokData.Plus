@@ -18,7 +18,7 @@ using System.Reflection;
 
 #endregion
 
-namespace WorkData.Helpers
+namespace WorkData.Code.Helpers
 {
     public class ReflectionHelper
     {

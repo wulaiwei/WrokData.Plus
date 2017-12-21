@@ -11,6 +11,7 @@
 
 #region
 
+using WorkData.Code.Entities;
 using WorkData.Extensions.Modules;
 
 #endregion

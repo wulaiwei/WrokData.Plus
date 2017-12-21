@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -55,8 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Do.cs" />
+    <Compile Include="DomainCoreModule.cs" />
+    <Compile Include="Permissions\Roles\BaseRole.cs" />
+    <Compile Include="Permissions\Users\BaseUser.cs" />
+    <Compile Include="Permissions\Users\ClaimTypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wallet.cs" />
+    <Compile Include="WorkDataSessionExtensions\IWorkDataSessionExtension.cs" />
+    <Compile Include="WorkDataSessionExtensions\WorkDataSessionExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -66,6 +72,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkData.Code\WorkData.Code.csproj">
+      <Project>{0598D734-1E02-4935-8CA0-4223CC41B44E}</Project>
+      <Name>WorkData.Code</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkData.Infrastructure\WorkData.Infrastructure.csproj">
       <Project>{C0B12581-CAE3-4ED0-99CF-D74249F0081F}</Project>
       <Name>WorkData.Infrastructure</Name>

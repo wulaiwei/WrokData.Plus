@@ -12,6 +12,7 @@
 #region
 
 using System.Data.Entity;
+using WorkData.Code.Sessions;
 
 #endregion
 
@@ -22,6 +23,11 @@ namespace WorkData.EntityFramework
     /// </summary>
     public abstract class WorkDataBaseDbContext : DbContext
     {
+        /// <summary>
+        /// Used to get current session values.
+        /// </summary>
+        public IWorkDataSession WorkDataSession { get; set; }
+
         protected WorkDataBaseDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {

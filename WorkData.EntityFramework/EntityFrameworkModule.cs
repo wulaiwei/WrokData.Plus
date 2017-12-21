@@ -12,12 +12,13 @@
 #region
 
 using Autofac;
+using WorkData.Code;
+using WorkData.Code.Helpers;
 using WorkData.EntityFramework.Extensions;
 using WorkData.EntityFramework.Repositories;
 using WorkData.EntityFramework.UnitOfWorks;
 using WorkData.Extensions.Modules;
 using WorkData.Extensions.Types;
-using WorkData.Helpers;
 using WorkData.Infrastructure;
 using WorkData.Infrastructure.Repositories;
 using WorkData.Infrastructure.UnitOfWorks;
@@ -29,7 +30,9 @@ namespace WorkData.EntityFramework
     /// <summary>
     ///     EntityFrameworkModule
     /// </summary>
-    [DependsOn(typeof(InfrastructurModule))]
+    [DependsOn(
+        typeof(InfrastructurModule)
+        ,typeof(WorkDataCodeModule))]
     public class EntityFrameworkModule : WorkDataBaseModule
     {
         private readonly ILoadType _loadType;

@@ -13,23 +13,27 @@
 
 using Domain.Core;
 using System.Linq;
+using WorkData.Code.Sessions;
 using WorkData.Infrastructure.Repositories;
 
 #endregion
 
 namespace WorkData.Service
 {
-    public class WalletService : IWalletService
+    public class WalletService : WorkDataBaseService,IWalletService
     {
         private readonly IBaseRepository<Wallet, int> _rep;
+        private readonly IWorkDataSession _workDataSession;
 
-        public WalletService(IBaseRepository<Wallet, int> rep)
+        public WalletService(IBaseRepository<Wallet, int> rep, IWorkDataSession workDataSession)
         {
             _rep = rep;
+            _workDataSession = workDataSession;
         }
 
         public void GetAll()
         {
+            var ss = _workDataSession;
             var reslut = _rep.GetAll().ToList();
 
             var item = new Wallet

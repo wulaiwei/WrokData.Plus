@@ -9,10 +9,14 @@
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+using System;
 using Domain.Core;
 using Domain.EntityFramework.Mappings;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using System.Threading;
+using WorkData.Code.Sessions;
 using WorkData.EntityFramework;
 
 namespace Domain.EntityFramework.EntityFramework
@@ -22,6 +26,7 @@ namespace Domain.EntityFramework.EntityFramework
     /// </summary>
     public class WorkDataContext : WorkDataBaseDbContext
     {
+
         public IDbSet<Wallet> Wallet { get; set; }
 
         /// <summary>
@@ -53,6 +58,13 @@ namespace Domain.EntityFramework.EntityFramework
 
             //新增
             modelBuilder.Configurations.Add(new WalletMap());
+        }
+
+        public override int SaveChanges()
+        {
+
+            var i = 1;
+            return base.SaveChanges();
         }
     }
 }

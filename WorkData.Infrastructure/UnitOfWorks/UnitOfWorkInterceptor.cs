@@ -10,7 +10,7 @@
 //  ------------------------------------------------------------------------------
 
 using Castle.DynamicProxy;
-using WorkData.Helpers;
+using WorkData.Code.Helpers;
 
 namespace WorkData.Infrastructure.UnitOfWorks
 {

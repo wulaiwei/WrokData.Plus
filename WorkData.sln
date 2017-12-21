@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "文档", "文档", "{7BFB2D8D-07C9-416D-B8E0-4B818ACEEF10}"
-	ProjectSection(SolutionItems) = preProject
-		线性表说明文档.txt = 线性表说明文档.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A46A2079-F3A2-48D1-9A32-0F7265D74CED}"
 EndProject

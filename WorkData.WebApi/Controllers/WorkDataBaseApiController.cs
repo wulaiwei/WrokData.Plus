@@ -12,6 +12,7 @@
 #region
 
 using System.Web.Http;
+using WorkData.Code.Sessions;
 using WorkData.WebApi.ResponseExtensions.Filters;
 
 #endregion
@@ -25,5 +26,13 @@ namespace WorkData.WebApi.Controllers
     [BaseApiActionFilter]
     public class WorkDataBaseApiController : ApiController
     {
+        /// <summary>
+        /// WorkDataSession
+        /// </summary>
+        public IWorkDataSession WorkDataSession { get; set; }
+
+        public WorkDataBaseApiController()
+        {
+        }
     }
 }

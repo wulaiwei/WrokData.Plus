@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using WorkData.Code.Sessions;
 using WorkData.Service;
 using WorkData.WebApi.Models;
 
@@ -19,6 +20,7 @@ namespace WorkData.WebApi.Controllers
         [HttpGet]
         public List<Class1> GetAll()
         {
+            var s = WorkDataSession;
             _walletService.GetAll();
 
             _doService.GetAll();
