@@ -9,6 +9,7 @@
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+using WorkData.Code.Entities;
 using WorkData.Code.WorkDataIdentity;
 
 namespace Domain.Core.Permissions.Users
@@ -16,8 +17,11 @@ namespace Domain.Core.Permissions.Users
     /// <summary>
     /// BaseUser
     /// </summary>
-    public class BaseUser: BaseUserIdentity<string>
+    public class BaseUser: BaseUserIdentity<string>,IEntity<string>
     {
-        
+        /// <summary>
+        /// Id
+        /// </summary>
+        public string Id { get; set; }
     }
 }

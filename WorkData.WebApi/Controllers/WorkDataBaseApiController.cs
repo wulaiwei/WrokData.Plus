@@ -12,6 +12,7 @@
 #region
 
 using System.Web.Http;
+using Domain.Core.WorkDataSessionExtensions;
 using WorkData.Code.Sessions;
 using WorkData.WebApi.ResponseExtensions.Filters;
 
@@ -29,7 +30,7 @@ namespace WorkData.WebApi.Controllers
         /// <summary>
         /// WorkDataSession
         /// </summary>
-        public IWorkDataSession WorkDataSession { get; set; }
+        public IWorkDataSessionExtension WorkDataSession { get; set; }
 
         public WorkDataBaseApiController()
         {

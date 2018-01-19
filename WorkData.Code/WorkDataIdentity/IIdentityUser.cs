@@ -18,7 +18,7 @@ namespace WorkData.Code.WorkDataIdentity
     /// <summary>
     /// Identity
     /// </summary>
-    public interface IIdentityUser<out TPrimaryKey> :IUser<TPrimaryKey> where TPrimaryKey:class
+    public interface IIdentityUser<out TPrimaryKey> :IUser<TPrimaryKey>
     {
     }
 }

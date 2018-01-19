@@ -11,7 +11,9 @@
 
 #region
 
+using System.Collections.Generic;
 using System.Data.Entity;
+using WorkData.Code.Entities.BaseInterfaces;
 using WorkData.Code.Sessions;
 
 #endregion

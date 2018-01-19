@@ -59,5 +59,19 @@ namespace WorkData.Infrastructure.Repositories
         /// <param name="model"></param>
         /// <returns></returns>
         public abstract Task<TEntity> InsertAsync(TEntity model);
+
+        /// <summary>
+        /// InsertGetId
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public abstract TPrimaryKey InsertGetId(TEntity model);
+
+        /// <summary>
+        /// InsertGetIdAsync
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public abstract Task<TPrimaryKey> InsertGetIdAsync(TEntity model);
     }
 }

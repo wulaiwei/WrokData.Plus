@@ -39,6 +39,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,7 +58,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contents\Category.cs" />
+    <Compile Include="Contents\Content.cs" />
+    <Compile Include="Contents\ContentDescriptionField.cs" />
+    <Compile Include="Contents\ContentDoubleField.cs" />
+    <Compile Include="Contents\ContentIntField.cs" />
+    <Compile Include="Contents\ContentStringField.cs" />
+    <Compile Include="Contents\ContentTextField.cs" />
+    <Compile Include="Contents\ContentTimeField.cs" />
+    <Compile Include="Contents\Manages\ModelManage.cs" />
+    <Compile Include="Contents\Model.cs" />
+    <Compile Include="Contents\ModelField.cs" />
     <Compile Include="Do.cs" />
+    <Compile Include="Permissions\Users\BaseUserManage.cs" />
+    <Compile Include="WorkDataBaseManage.cs" />
     <Compile Include="DomainCoreModule.cs" />
     <Compile Include="Permissions\Roles\BaseRole.cs" />
     <Compile Include="Permissions\Users\BaseUser.cs" />

@@ -1,0 +1,26 @@
+﻿@model  List<WorkData.Test.TestEntity.Person>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<style>
+    .c_color {
+        color:red;
+    }
+</style>
+<body>
+<div>
+      @foreach (var item in Model)
+      {
+            <p>@Html.Raw(item.Name)</p>
+      }
+</div>
+</body>
+</html>

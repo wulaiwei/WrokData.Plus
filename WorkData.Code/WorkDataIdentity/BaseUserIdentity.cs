@@ -21,7 +21,7 @@ namespace WorkData.Code.WorkDataIdentity
     ///     基础用户表（如无需使用可直接继承IIdentity进行扩展）
     /// </summary>
     public abstract class BaseUserIdentity<TPrimaryKey> : BaseEntity
-        , IIdentityUser<TPrimaryKey> where TPrimaryKey : class
+        , IIdentityUser<TPrimaryKey> 
     {
         /// <summary>
         ///     Id

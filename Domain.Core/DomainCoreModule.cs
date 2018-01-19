@@ -5,14 +5,19 @@
 // 创建标识：吴来伟 2017-12-19 17:03
 // 创建描述：
 //  
-// 修改标识：吴来伟2017-12-19 17:03
+// 修改标识：吴来伟2017-12-22 17:24
 // 修改描述：
 //  ------------------------------------------------------------------------------
 
+#region
+
 using Autofac;
+using Domain.Core.Contents.Manages;
+using Domain.Core.Permissions.Users;
 using Domain.Core.WorkDataSessionExtensions;
-using WorkData.Code.Sessions;
 using WorkData.Extensions.Modules;
+
+#endregion
 
 namespace Domain.Core
 {
@@ -21,7 +26,10 @@ namespace Domain.Core
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<WorkDataSessionExtension>()
-                .As<IWorkDataSession>(); 
+                .As<IWorkDataSessionExtension>();
+
+            builder.RegisterType<BaseUserManage>();
+            builder.RegisterType<ModelManage>();
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿{
+  "took": 2,
+  "timed_out": false, //是否超时
+  "_shards": { 
+    "total": 5,  //搜索碎片数量
+    "successful": 5, //成功数量
+    "failed": 0 //失败数量
+  },
+  "hits": {  //结果集
+    "total": 1,  //总数量
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "db_test",
+        "_type": "test",
+        "_id": "1",
+        "_score": null,
+        "_source": {
+          "id": 1,
+          "title": "测试",
+          "author": "李四",
+          "age": 34
+        },
+        "sort": [ 1 ]
+      }
+    ]
+  }
+}

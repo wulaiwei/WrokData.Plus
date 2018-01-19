@@ -11,6 +11,7 @@
 
 #region
 
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -76,6 +77,34 @@ namespace WorkData.EntityFramework.Repositories
         public override Task<TEntity> InsertAsync(TEntity model)
         {
             return Task.FromResult(DbSet.Add(model));
+        }
+
+        /// <summary>
+        /// InsertGetId
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public override TPrimaryKey InsertGetId(TEntity model)
+        {
+            model = Insert(model);
+
+            Context.SaveChanges();
+
+            return model.Id;
+        }
+
+        /// <summary>
+        /// InsertGetIdAsync
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public override async Task<TPrimaryKey> InsertGetIdAsync(TEntity model)
+        {
+            model = await InsertAsync(model);
+
+            Context.SaveChanges();
+
+            return model.Id;
         }
     }
 }

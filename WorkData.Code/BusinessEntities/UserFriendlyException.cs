@@ -22,7 +22,7 @@ namespace WorkData.Code.BusinessEntities
         /// <summary>
         /// Additional information about the exception.
         /// </summary>
-        public string Details { get; private set; }
+        public string Details { get; }
 
         /// <summary>
         /// An arbitrary error code.

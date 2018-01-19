@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using WorkData.Code.Permissions;
 
 #endregion
 
@@ -24,6 +25,31 @@ namespace WorkData.Code.Predicates
     /// </summary>
     public class PredicateGroup<T> : IPredicateGroup<T> where T : class
     {
+        /// <summary>
+        /// PredicateConfig
+        /// </summary>
+        public PredicateConfig PredicateConfig { get; set; }
+
+        /// <summary>
+        /// PredicateGroup
+        /// </summary>
+        /// <param name="predicateConfig"></param>
+        public PredicateGroup(PredicateConfig predicateConfig)
+        {
+            Predicates = new List<WorkDataPredicate<T>>();
+            var factory = new object();
+
+            if (predicateConfig.DataPermissionType== DataPermissionType.主账号子账号)
+            {
+
+            }
+            else
+            {
+                
+            }
+
+        }
+
         public PredicateGroup(bool isInterceptor)
         {
             Predicates = new List<WorkDataPredicate<T>>();

@@ -39,7 +39,6 @@ namespace Domain.EntityFramework
             //        //.WithParameter(new NamedParameter("nameOrConnectionString", $"{typeof(WorkDataContext)}"))
             //        .Named($"{typeof(WorkDataContext)}", typeof(DbContext));
             builder.Register(c => new WorkDataContext("WorkDataContext") { WorkDataSession = c.Resolve<IWorkDataSession>() });
-            builder.Register(c => new DoContext("DoContext") { WorkDataSession = c.Resolve<IWorkDataSession>() });
         }
     }
 }

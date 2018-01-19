@@ -39,6 +39,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -50,11 +56,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditRules\AuditRuleConfig.cs" />
+    <Compile Include="AuditRules\AuditRuleExtend.cs" />
     <Compile Include="DomainEntityFrameworkModule.cs" />
-    <Compile Include="EntityFramework\DoContext.cs" />
     <Compile Include="EntityFramework\WorkDataContext.cs" />
-    <Compile Include="Mappings\DoMap.cs" />
-    <Compile Include="Mappings\WalletMap.cs" />
+    <Compile Include="Mappings\Contents\CategoryConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentDescriptionFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentDoubleFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentIntFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentStringFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentTextFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ContentTimeFieldConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ModelConfiguration.cs" />
+    <Compile Include="Mappings\Contents\ModelFieldConfiguration.cs" />
+    <Compile Include="Mappings\Permissions\BaseUserMap.cs" />
+    <Compile Include="Migrations\201801170734160_Cms.cs" />
+    <Compile Include="Migrations\201801170734160_Cms.Designer.cs">
+      <DependentUpon>201801170734160_Cms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801170746321_Cms_Update.cs" />
+    <Compile Include="Migrations\201801170746321_Cms_Update.Designer.cs">
+      <DependentUpon>201801170746321_Cms_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +108,13 @@
       <Name>WorkData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801170734160_Cms.resx">
+      <DependentUpon>201801170734160_Cms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801170746321_Cms_Update.resx">
+      <DependentUpon>201801170746321_Cms_Update.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -56,9 +56,6 @@ namespace WorkData.EntityFramework
             builder.RegisterType<EfUnitOfWork>()
                 .As<IUnitOfWork, IActiveUnitOfWork, IUnitOfWorkCompleteHandle>();
 
-            //builder.RegisterGeneric(typeof(EfBaseRepository<,>))
-            //    .As(typeof(IBaseRepository<,>));
-
             RegisterMatchDbContexts();
         }
 
@@ -74,13 +71,6 @@ namespace WorkData.EntityFramework
             var builder = new ContainerBuilder();
             foreach (var type in types)
             {
-                //if (!IocManager.IocContainer.IsRegistered(type))
-                //{
-                //    builder.RegisterType(type)
-                //        .WithParameter(new NamedParameter("nameOrConnectionString", type))
-                //        .Named($"{type}", typeof(DbContext));
-                //}
-
                 var entityTypeInfos = DbContextHelper.GetEntityTypeInfos(type);
                 foreach (var entityTypeInfo in entityTypeInfos)
                 {

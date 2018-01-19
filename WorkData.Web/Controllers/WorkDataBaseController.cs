@@ -12,7 +12,7 @@
 #region
 
 using System.Web.Mvc;
-using WorkData.Code.Sessions;
+using Domain.Core.WorkDataSessionExtensions;
 
 #endregion
 
@@ -26,7 +26,7 @@ namespace WorkData.Web.Controllers
         /// <summary>
         /// WorkDataSession
         /// </summary>
-        public IWorkDataSession WorkDataSession { get; set; }
+        public  IWorkDataSessionExtension WorkDataSession { get; set; }
 
         public WorkDataBaseController()
         {
